@@ -257,13 +257,13 @@ files = [
 
 [[package]]
 name = "openai"
-version = "1.40.3"
+version = "1.40.5"
 description = "The official Python library for the openai API"
 optional = false
 python-versions = ">=3.7.1"
 files = [
-    {file = "openai-1.40.3-py3-none-any.whl", hash = "sha256:09396cb6e2e15c921a5d872bf92841a60a9425da10dcd962b45fe7c4f48f8395"},
-    {file = "openai-1.40.3.tar.gz", hash = "sha256:f2ffe907618240938c59d7ccc67dd01dc8c50be203c0077240db6758d2f02480"},
+    {file = "openai-1.40.5-py3-none-any.whl", hash = "sha256:88ab3163573985c87fcf77958cdc51c0b89f843c80f3ac7d60e049940570ea00"},
+    {file = "openai-1.40.5.tar.gz", hash = "sha256:0d27d120a287eb23dec2a98d101c6a2362a327861787d9fce2739aec9e2b9543"},
 ]
 
 [package.dependencies]
@@ -551,6 +551,20 @@ files = [
 six = ">=1.5"
 
 [[package]]
+name = "python-dotenv"
+version = "1.0.1"
+description = "Read key-value pairs from a .env file and set them as environment variables"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "python-dotenv-1.0.1.tar.gz", hash = "sha256:e324ee90a023d808f1959c46bcbc04446a10ced277783dc6ee09987c37ec10ca"},
+    {file = "python_dotenv-1.0.1-py3-none-any.whl", hash = "sha256:f7b63ef50f1b690dddf550d03497b66d609393b40b564ed0d674909a68ebf16a"},
+]
+
+[package.extras]
+cli = ["click (>=5.0)"]
+
+[[package]]
 name = "pytz"
 version = "2024.1"
 description = "World timezone definitions, modern and historical"
@@ -628,4 +642,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "8d9ef8edd0bac89d8652ad62c53025fc9907aa2ea9324ea60ee34d0a0f1b5f44"
+content-hash = "8fd283061ebf2ff5b9ea074bbe1b2aed32a8530e126a2cf6d3ffc23ace7a95f3"

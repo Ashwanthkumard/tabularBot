@@ -1,14 +1,17 @@
 import csv
 import io
+import logging
 import os
 
 from pydantic import BaseModel
-from pymupdf import pymupdf
+from pymupdf import pymupdf, FileDataError
 from openai import OpenAI
 import pandas as pd
 
 from tabularbot.config.config import Workspace
 from tabularbot.prompts.unstructured_data_cleaning_prompt import UnstructuredDataCleaning
+
+logger = logging.getLogger(__name__)
 
 
 class InvoiceDataExtraction(BaseModel):
@@ -29,15 +32,20 @@ class ExtractData:
 
     @staticmethod
     def extract_data_from_file(file) -> str:
-        doc = pymupdf.open(file)
-        all_text = ""
-        for page in doc:
-            text = page.get_text()
-            all_text += text
-        return all_text
+        try:
+            doc = pymupdf.open(file)
+            all_text = ""
+            for page in doc:
+                text = page.get_text()
+                all_text += text
+            return all_text
+        except FileDataError:
+            logger.error("Failed loading file : ", file)
+            return ""
 
     def extract_tabular_data(self) -> pd.DataFrame:
         files = self.get_all_files(self.dir_path)
+        logger.info(f"Directory has {len(files)} files")
 
         all_data = []
 

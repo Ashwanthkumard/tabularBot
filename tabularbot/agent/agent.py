@@ -1,7 +1,11 @@
+import logging
+
 from openai import OpenAI
 
 from tabularbot.config.config import Workspace
 from tabularbot.dataloader.data_extractor import ExtractData
+
+logger = logging.getLogger(__name__)
 
 
 class TabularDataAgent:
@@ -22,7 +26,7 @@ class TabularDataAgent:
 
             # Check if the user wants to quit
             if user_input.lower() in ["exit", "quit"]:
-                print("Terminating the process!")
+                logger.warning("Terminating the process!")
                 break
 
             try:
@@ -39,4 +43,4 @@ class TabularDataAgent:
 
                 print("Assistant: " + completion.choices[0].message.content)
             except Exception as e:
-                print(f"Error: {e}")
+                logger.error(f"Error: {e}")

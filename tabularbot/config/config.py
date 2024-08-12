@@ -1,10 +1,10 @@
-from pydantic import BaseModel
+from dotenv import load_dotenv
+from pydantic import BaseModel, Field
 import os
 
-from tabularbot.prompts.base import BasePrompt
+load_dotenv()
 
 
 class Workspace(BaseModel):
     dir_path: str
-    open_ai_key: os.getenv("OPEN_AI_KEY")
-    # prompt: BasePrompt
+    open_ai_key: str = Field(default_factory=lambda: os.getenv("OPEN_AI_KEY"))
